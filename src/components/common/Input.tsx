@@ -1,33 +1,46 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, forwardRef } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  icon?: string;
 }
 
-const Input = ({ label, error, className, ...props }: InputProps) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ label, error, icon, className, ...props }, ref) => {
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label className="text-[12px] font-medium text-[rgba(255,255,255,0.7)]">
+        <label className="text-[12px] font-bold tracking-wider text-secondary px-1 uppercase">
           {label}
         </label>
       )}
-      <input
-        className={`
-          bg-[rgba(0,0,0,0.2)] border border-[rgba(255,255,255,0.1)]
-          rounded-lg px-4 py-3 text-white placeholder-[rgba(255,255,255,0.3)]
-          focus:outline-none focus:border-[#6c5ce7] transition-colors
-          ${error ? 'border-[#ff7675]' : ''}
-          ${className || ''}
-        `}
-        {...props}
-      />
+      <div className="relative group">
+        {icon && (
+          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-lg">
+            {icon}
+          </span>
+        )}
+        <input
+          ref={ref}
+          className={`
+            w-full ${icon ? 'pl-12' : 'px-4'} pr-4 py-4
+            bg-surface-container-low border border-white/10 rounded-lg
+            text-on-surface placeholder:text-on-surface-variant/40
+            focus:border-primary-container focus:ring-1 focus:ring-primary-container
+            outline-none transition-all
+            ${error ? 'border-error' : ''}
+            ${className || ''}
+          `}
+          {...props}
+        />
+      </div>
       {error && (
-        <span className="text-[12px] text-[#ff7675]">{error}</span>
+        <span className="text-[12px] text-error px-1">{error}</span>
       )}
     </div>
   );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;

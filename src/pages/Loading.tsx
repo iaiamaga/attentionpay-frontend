@@ -12,13 +12,13 @@ const Loading = () => {
           clearInterval(interval);
           return 100;
         }
-        return prev + 10;
+        return prev + 2;
       });
-    }, 150);
+    }, 100);
 
     const timer = setTimeout(() => {
       navigate('/welcome');
-    }, 2000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
@@ -27,49 +27,50 @@ const Loading = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-[#13121b] flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#6c5ce7] rounded-full opacity-20 blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00d9ff] rounded-full opacity-20 blur-[100px]" />
-      </div>
+    <div className="min-h-screen bg-background text-on-background flex flex-col overflow-hidden relative">
+      <main className="relative flex-grow flex flex-col items-center justify-center p-container-margin circuit-bg min-h-screen">
+        <div className="absolute inset-0 z-0 opacity-40 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-container/20 via-transparent to-secondary-container/20" />
+          <div className="absolute w-[200%] h-[200%] top-[-50%] left-[-50%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent blur-[100px]" />
+        </div>
 
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="relative mb-8">
-          <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#ffd700] to-[#b8860b] flex items-center justify-center shadow-[0_0_40px_rgba(255,215,0,0.3)]">
-            <svg 
-              viewBox="0 0 24 24" 
-              className="w-14 h-14 text-[#13121b]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path 
-                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                fill="currentColor"
+        <div className="relative z-10 flex flex-col items-center text-center max-w-md w-full animate-in fade-in zoom-in duration-1000">
+          <div className="mb-xl relative group">
+            <div className="absolute inset-0 bg-secondary-container/20 blur-3xl rounded-full scale-150 group-hover:scale-[1.75] transition-transform duration-700" />
+            <div className="relative w-48 h-48 glass-panel rounded-full flex items-center justify-center border-white/20 shadow-[0_0_50px_rgba(0,217,255,0.2)]">
+              <img 
+                alt="AttnPay Logo" 
+                className="w-4/5 h-4/5 object-contain rounded-full" 
+                src="https://lh3.googleusercontent.com/aida/ADBb0uh_orTQ7XTOJQriU85CGf0sxrRl8t0g-QLmmEceMNIaW7tCbnmPqqHlx1Fm1MaffZ5_skjP_xSUdtv1afoayospmR-ZUi4i9gVDYCSBDCc_brNR5Beyx3NanIdA4bzDgs-t_R2oWlJ9wCzK2FvxX5xxO2mSGVI5_lSf2uewsAZmfAx2GMmDFdvc1hdWojypqH2rxRCF0ank2hkZO98HGFs1RYArK35uphDw32L_z4VRtQE01amz9EWg1JkPOGHn4gak7lAKw5PL1Bc"
               />
-            </svg>
+            </div>
           </div>
-          <div className="absolute -inset-2 rounded-2xl border border-[rgba(255,215,0,0.3)] animate-pulse" />
-        </div>
 
-        <h1 className="text-3xl font-bold text-white mb-2 tracking-wide">
-          AttnPay
-        </h1>
-        <p className="text-base text-[rgba(255,255,255,0.7)] mb-10">
-          Sua atenção, seu poder.
-        </p>
+          <div className="space-y-sm">
+            <h1 className="text-[32px] font-bold leading-[40px] tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-secondary to-secondary-container">
+              AttnPay
+            </h1>
+            <p className="text-[18px] font-semibold leading-6 text-on-surface-variant/80 tracking-wide">
+              Sua atenção, seu poder.
+            </p>
+          </div>
 
-        <div className="w-48 h-1 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-[#6c5ce7] to-[#00d9ff] transition-all duration-300 ease-out"
-            style={{ width: `${progress}%` }}
-          />
+          <div className="mt-xl w-full max-w-[240px] px-sm">
+            <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-secondary-container neon-glow-secondary rounded-full transition-all duration-300 ease-out" 
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <div className="mt-md flex justify-between items-center text-[12px] font-bold tracking-wider text-on-surface-variant/60">
+              <span>Sincronizando...</span>
+              <span>{progress}%</span>
+            </div>
+          </div>
         </div>
-        
-        <p className="mt-4 text-xs text-[rgba(255,255,255,0.5)]">
-          Sincronizando...
-        </p>
-      </div>
+      </main>
+
+      <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
     </div>
   );
 };
