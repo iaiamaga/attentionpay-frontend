@@ -1,0 +1,10 @@
+# Configuração do opencode
+opencode.json
+
+# API Keys
+.env
+
+# Arquivos de design e produto (privados)
+DESIGN.md
+PRD.md
+
