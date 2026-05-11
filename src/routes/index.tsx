@@ -9,6 +9,7 @@ import FinancialDetail from '@/pages/FinancialDetail';
 import Profile from '@/pages/Profile';
 import Settings from '@/pages/Settings';
 import Support from '@/pages/Support';
+import SupportChat from '@/pages/SupportChat';
 import ConnectWallet from '@/pages/ConnectWallet';
 
 const AppRoutes = () => {
@@ -24,6 +25,7 @@ const AppRoutes = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/support" element={<Support />} />
+      <Route path="/support-chat" element={<SupportChat />} />
       <Route path="/connect-wallet" element={<ConnectWallet />} />
       <Route path="*" element={<Navigate to="/loading" replace />} />
     </Routes>

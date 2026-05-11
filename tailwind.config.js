@@ -35,6 +35,7 @@ export default {
         tertiary: "#ffb77d",
         "tertiary-container": "#ac5d00",
         "on-tertiary-container": "#fff5f1",
+        outline: "#928ea0",
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

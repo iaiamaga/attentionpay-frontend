@@ -54,8 +54,17 @@ const Support = () => {
               <h2 className="text-[24px] font-semibold leading-[32px] text-primary tracking-[-0.01em]">Atividades</h2>
               <p className="text-[14px] leading-5 text-on-surface-variant">Fluxo consolidado de AttnPay</p>
             </div>
-            <div className="glass-panel px-4 py-2 rounded-xl">
-              <span className="text-[12px] font-bold tracking-wider text-secondary">PRO PROFILE</span>
+            <div className="flex items-center gap-2">
+              <div className="glass-panel px-4 py-2 rounded-xl">
+                <span className="text-[12px] font-bold tracking-wider text-secondary">PRO PROFILE</span>
+              </div>
+              <button 
+                onClick={() => navigate('/support-chat')}
+                className="glass-panel px-3 py-2 rounded-xl flex items-center gap-2 hover:bg-white/10 transition-all neon-glow-primary"
+              >
+                <span className="material-symbols-outlined text-primary">chat</span>
+                <span className="text-[12px] font-bold tracking-wider text-primary">Chat</span>
+              </button>
             </div>
           </div>
         </section>
