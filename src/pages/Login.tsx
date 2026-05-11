@@ -64,7 +64,7 @@ const Login = () => {
                   <div className="flex justify-between items-end">
                     <label className="text-[12px] font-bold tracking-wider text-on-surface-variant block uppercase">SENHA</label>
                     <button 
-                      onClick={() => navigate('/forgot-password')}
+                      onClick={() => navigate('/password-recovery')}
                       className="text-[10px] font-bold tracking-wider text-primary hover:text-secondary transition-colors"
                     >
                       ESQUECEU A SENHA?
