@@ -5,6 +5,7 @@ import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
 import ForgotPassword from '@/pages/ForgotPassword';
 import PasswordRecovery from '@/pages/PasswordRecovery';
+import Verification from '@/pages/Verification';
 import Dashboard from '@/pages/Dashboard';
 import FinancialDetail from '@/pages/FinancialDetail';
 import Profile from '@/pages/Profile';
@@ -22,6 +23,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/password-recovery" element={<PasswordRecovery />} />
+      <Route path="/verification" element={<Verification />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/financial" element={<FinancialDetail />} />
       <Route path="/profile" element={<Profile />} />
