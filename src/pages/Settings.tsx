@@ -1,14 +1,9 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import BottomNav from '@/components/layout/BottomNav';
-import Toggle from '@/components/common/Toggle';
 
 const Settings = () => {
   const navigate = useNavigate();
-  const [twoFA, setTwoFA] = useState(true);
-  const [pushAlerts, setPushAlerts] = useState(true);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   return (
     <div className="min-h-screen bg-background text-on-surface">
@@ -61,100 +56,6 @@ const Settings = () => {
 
           <div className="glass-panel rounded-xl overflow-hidden">
             <div className="p-4 border-b border-white/10 flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary-container">shield</span>
-              <h3 className="text-[18px] font-semibold leading-6">Segurança</h3>
-            </div>
-            <div className="p-4 space-y-4">
-              <div className="flex items-center justify-between p-3">
-                <div>
-                  <p className="text-[16px] leading-6">Autenticação 2FA</p>
-                  <p className="text-[14px] leading-5 text-on-surface-variant/60">Proteja sua conta com um segundo passo</p>
-                </div>
-                <Toggle checked={twoFA} onChange={setTwoFA} variant="purple" />
-              </div>
-              <button className="w-full flex items-center justify-between hover:bg-white/5 p-3 rounded-lg transition-colors">
-                <div className="text-left">
-                  <p className="text-[16px] leading-6">Dispositivos Conectados</p>
-                  <p className="text-[14px] leading-5 text-on-surface-variant/60">3 sessões ativas no momento</p>
-                </div>
-                <span className="material-symbols-outlined text-on-surface-variant">devices</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-xl overflow-hidden">
-            <div className="p-4 border-b border-white/10 flex items-center gap-2">
-              <span className="material-symbols-outlined text-tertiary">palette</span>
-              <h3 className="text-[18px] font-semibold leading-6">Aparência & Idioma</h3>
-            </div>
-            <div className="p-4 space-y-6">
-              <div>
-                <p className="text-[12px] font-bold tracking-wider text-on-surface-variant/70 uppercase mb-2">Modo do Tema</p>
-                <div className="flex gap-4">
-                  <button 
-                    onClick={() => setTheme('dark')}
-                    className={`flex-1 glass-panel py-4 flex flex-col items-center gap-1 rounded-lg ${theme === 'dark' ? 'border-primary-container neon-glow-purple' : 'opacity-40'}`}
-                  >
-                    <span className="material-symbols-outlined text-primary">dark_mode</span>
-                    <span className="text-[14px] leading-5">Dark</span>
-                  </button>
-                  <button 
-                    onClick={() => setTheme('light')}
-                    className={`flex-1 glass-panel py-4 flex flex-col items-center gap-1 rounded-lg ${theme === 'light' ? 'border-primary-container neon-glow-purple' : 'opacity-40'}`}
-                  >
-                    <span className="material-symbols-outlined">light_mode</span>
-                    <span className="text-[14px] leading-5">Light</span>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-[12px] font-bold tracking-wider text-on-surface-variant/70 uppercase mb-2">Cor de Acento</p>
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary-container border-2 border-white neon-glow-purple cursor-pointer"></div>
-                  <div className="w-10 h-10 rounded-full bg-secondary-container cursor-pointer"></div>
-                  <div className="w-10 h-10 rounded-full bg-tertiary-container cursor-pointer"></div>
-                  <div className="w-10 h-10 rounded-full bg-error-container cursor-pointer"></div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <p className="text-[16px] leading-6">Idioma do Sistema</p>
-                <div className="flex bg-surface-container rounded-lg p-1 border border-white/5">
-                  <button className="px-4 py-1 bg-primary-container rounded-md text-[12px] font-bold tracking-wider text-white">PT</button>
-                  <button className="px-4 py-1 text-[12px] font-bold tracking-wider text-on-surface-variant/60">EN</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="glass-panel p-4 rounded-xl space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary">visibility</span>
-                <h3 className="text-[18px] font-semibold leading-6">Privacidade</h3>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[14px] leading-5">Perfil Público</span>
-                <div className="w-10 h-5 bg-surface-container-highest rounded-full relative">
-                  <div className="absolute left-1 top-1 w-3 h-3 bg-on-surface-variant rounded-full"></div>
-                </div>
-              </div>
-            </div>
-            <div className="glass-panel p-4 rounded-xl space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary">notifications_active</span>
-                <h3 className="text-[18px] font-semibold leading-6">Notificações</h3>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[14px] leading-5">Push Alerts</span>
-                <Toggle checked={pushAlerts} onChange={setPushAlerts} variant="cyan" />
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-xl overflow-hidden">
-            <div className="p-4 border-b border-white/10 flex items-center gap-2">
               <span className="material-symbols-outlined text-secondary-container">account_balance_wallet</span>
               <h3 className="text-[18px] font-semibold leading-6">Conectar Wallet</h3>
             </div>
@@ -199,6 +100,13 @@ const Settings = () => {
               </button>
             </div>
           </div>
+
+          <button 
+            onClick={() => navigate(-1)}
+            className="w-full bg-primary-container text-on-primary-container p-4 rounded-xl font-semibold text-[18px] leading-6 text-center hover:brightness-110 transition-all"
+          >
+            Concluir
+          </button>
 
           <button className="w-full glass-panel p-4 rounded-xl text-error font-semibold text-[18px] leading-6 text-center border border-error/20 hover:bg-error/5 transition-colors">
             Encerrar Sessão

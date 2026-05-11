@@ -7,7 +7,6 @@ import ForgotPassword from '@/pages/ForgotPassword';
 import PasswordRecovery from '@/pages/PasswordRecovery';
 import Verification from '@/pages/Verification';
 import Dashboard from '@/pages/Dashboard';
-import FinancialDetail from '@/pages/FinancialDetail';
 import Profile from '@/pages/Profile';
 import Settings from '@/pages/Settings';
 import Support from '@/pages/Support';
@@ -25,7 +24,6 @@ const AppRoutes = () => {
       <Route path="/password-recovery" element={<PasswordRecovery />} />
       <Route path="/verification" element={<Verification />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/financial" element={<FinancialDetail />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/support" element={<Support />} />

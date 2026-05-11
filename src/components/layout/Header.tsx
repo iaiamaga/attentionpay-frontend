@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
+import IdiomButton from '@/components/common/IdiomButton';
 
 interface HeaderProps {
   title?: string;
@@ -9,7 +10,7 @@ interface HeaderProps {
   showSearch?: boolean;
 }
 
-const Header = ({ right, showSearch = true }: HeaderProps) => {
+const Header = ({ right }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -23,27 +24,13 @@ const Header = ({ right, showSearch = true }: HeaderProps) => {
         <span className="text-[32px] font-bold leading-[40px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-container to-secondary-container">AttnPay</span>
       </div>
       <div className="flex items-center gap-4">
-        {showSearch && (
-          <div className="hidden md:flex items-center bg-surface-container-highest/50 rounded-full px-4 py-1 border border-white/5">
-            <span className="material-symbols-outlined text-on-surface-variant text-xl">search</span>
-            <input 
-              className="bg-transparent border-none focus:ring-0 text-[14px] w-48 text-on-surface placeholder:text-on-surface-variant" 
-              placeholder="Search..." 
-              type="text"
-            />
-          </div>
-        )}
-        <button className="flex items-center gap-1 px-2 py-1 rounded-full bg-surface-container-high/50 border border-white/5 hover:bg-white/10 transition-colors text-[12px] font-bold tracking-wider">
-          <span className="text-primary">PT</span>
-          <span className="opacity-30">|</span>
-          <span className="text-on-surface-variant">EN</span>
-        </button>
+        <IdiomButton />
         {right || (
           <button 
             onClick={() => navigate('/settings')}
             className="material-symbols-outlined text-primary hover:bg-white/10 transition-colors p-2 rounded-full"
           >
-            notifications
+            settings
           </button>
         )}
       </div>

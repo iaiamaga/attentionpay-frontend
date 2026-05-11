@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import IdiomButtom from '@/components/common/IdiomButton';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -14,9 +15,7 @@ const Welcome = () => {
         <header className="w-full flex justify-end">
           <div className="glass-panel px-4 py-2 rounded-full flex items-center gap-2">
             <span className="material-symbols-outlined text-secondary-fixed-dim text-lg">language</span>
-            <button className="text-[12px] font-bold tracking-wider text-secondary-fixed-dim">PT-BR</button>
-            <span className="w-[1px] h-3 bg-white/10" />
-            <button className="text-[12px] font-bold tracking-wider text-on-surface-variant/50 hover:text-on-surface transition-colors">EN</button>
+            <IdiomButtom />
           </div>
         </header>
 
@@ -68,10 +67,6 @@ const Welcome = () => {
             </div>
             <span className="material-symbols-outlined text-secondary-fixed-dim">login</span>
           </button>
-
-          <p className="text-center text-[14px] leading-5 text-on-surface-variant/40 mt-3 px-4">
-            Ao continuar, você concorda com nossos <a className="text-secondary/60 underline underline-offset-4" href="#">Termos de Uso</a> e <a className="text-secondary/60 underline underline-offset-4" href="#">Privacidade</a>.
-          </p>
         </div>
 
         <div className="absolute bottom-10 left-10 w-24 h-24 border-l border-b border-white/5 opacity-50" />
