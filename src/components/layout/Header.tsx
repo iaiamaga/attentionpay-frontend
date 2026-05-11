@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
 import IdiomButton from '@/components/common/IdiomButton';
 
 interface HeaderProps {
@@ -11,8 +10,6 @@ interface HeaderProps {
 }
 
 const Header = ({ right }: HeaderProps) => {
-  const navigate = useNavigate();
-
   return (
     <header className="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin py-4 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(108,92,231,0.2)]">
       <div className="flex items-center gap-2">
@@ -25,14 +22,7 @@ const Header = ({ right }: HeaderProps) => {
       </div>
       <div className="flex items-center gap-4">
         <IdiomButton />
-        {right || (
-          <button 
-            onClick={() => navigate('/settings')}
-            className="material-symbols-outlined text-primary hover:bg-white/10 transition-colors p-2 rounded-full"
-          >
-            settings
-          </button>
-        )}
+        {right}
       </div>
     </header>
   );

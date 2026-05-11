@@ -5,11 +5,6 @@ import BottomNav from '@/components/layout/BottomNav';
 const Support = () => {
   const navigate = useNavigate();
 
-  const documents = [
-    { name: 'FATURA_MAR_24.PDF', size: '2.4 MB', type: 'PDF', icon: 'visibility' },
-    { name: 'RELATÓRIO_ANUAL.XLSX', size: '1.1 MB', type: 'TABLE', icon: 'download' },
-  ];
-
   const timelineEvents = [
     { 
       category: 'FINANCEIRO', 
@@ -54,41 +49,9 @@ const Support = () => {
               <h2 className="text-[24px] font-semibold leading-[32px] text-primary tracking-[-0.01em]">Atividades</h2>
               <p className="text-[14px] leading-5 text-on-surface-variant">Fluxo consolidado de AttnPay</p>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="glass-panel px-4 py-2 rounded-xl">
-                <span className="text-[12px] font-bold tracking-wider text-secondary">PRO PROFILE</span>
-              </div>
-              <button 
-                onClick={() => navigate('/support-chat')}
-                className="glass-panel px-3 py-2 rounded-xl flex items-center gap-2 hover:bg-white/10 transition-all neon-glow-primary"
-              >
-                <span className="material-symbols-outlined text-primary">chat</span>
-                <span className="text-[12px] font-bold tracking-wider text-primary">Chat</span>
-              </button>
-            </div>
           </div>
         </section>
 
-        <section className="mb-8">
-          <h3 className="text-[18px] font-semibold leading-6 text-on-surface mb-4 flex items-center gap-1">
-            <span className="material-symbols-outlined text-secondary-container">folder_open</span>
-            Documentos Recentes
-          </h3>
-          <div className="grid grid-cols-2 gap-3">
-            {documents.map((doc, index) => (
-              <div key={index} className="glass-panel p-4 rounded-xl group cursor-pointer hover:border-secondary-container/50 transition-all">
-                <div className="relative aspect-video rounded-lg overflow-hidden mb-2 border border-white/5 bg-surface-container">
-                  <div className="w-full h-full bg-gradient-to-br from-primary-container/20 to-secondary-container/20" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="material-symbols-outlined text-secondary-container scale-125">{doc.icon}</span>
-                  </div>
-                </div>
-                <p className="text-[12px] font-bold tracking-wider text-on-surface truncate">{doc.name}</p>
-                <p className="text-[10px] text-on-surface-variant/60 uppercase">{doc.size} • {doc.type}</p>
-              </div>
-            ))}
-          </div>
-        </section>
 
         <section className="relative">
           <h3 className="text-[18px] font-semibold leading-6 text-on-surface mb-4 flex items-center gap-1">
