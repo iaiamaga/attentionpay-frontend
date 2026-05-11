@@ -32,6 +32,9 @@ export default {
         success: "#00b894",
         warning: "#fdcb6e",
         error: "#ff7675",
+        tertiary: "#ffb77d",
+        "tertiary-container": "#ac5d00",
+        "on-tertiary-container": "#fff5f1",
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

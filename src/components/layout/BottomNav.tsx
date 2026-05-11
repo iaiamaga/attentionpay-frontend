@@ -1,31 +1,49 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const BottomNav = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const navItems = [
-    { path: '/dashboard', label: 'Início', icon: '🏠' },
-    { path: '/financial', label: 'Financeiro', icon: '💰' },
-    { path: '/support', label: 'Suporte', icon: '🎧' },
-    { path: '/profile', label: 'Perfil', icon: '👤' },
+    { path: '/dashboard', icon: 'grid_view', label: 'Início' },
+    { path: '/financial', icon: 'insights', label: 'Financeiro' },
+    { path: '/settings', icon: 'add_circle', accent: true, label: 'Adicionar' },
+    { path: '/support', icon: 'layers', label: 'Suporte' },
+    { path: '/profile', icon: 'person', active: true, label: 'Perfil' },
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[rgba(28,27,35,0.6)] backdrop-blur-[12px] border-t border-[rgba(255,255,255,0.1)] px-4 py-2">
-      <div className="flex justify-between items-center">
-        {navItems.map(item => (
-          <NavLink
+    <nav className="fixed bottom-0 w-full z-50 bg-surface-container-low/40 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] px-4 py-3 flex justify-around items-center">
+      {navItems.map((item) => {
+        const isActive = item.path === location.pathname || item.active;
+        
+        if (item.accent) {
+          return (
+            <button
+              key={item.path}
+              className="flex flex-col items-center justify-center text-secondary-container shadow-[0_0_15px_rgba(0,217,255,0.4)] rounded-full p-3 active:scale-90"
+            >
+              <span className="material-symbols-outlined text-[32px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                {item.icon}
+              </span>
+            </button>
+          );
+        }
+
+        return (
+          <button
             key={item.path}
-            to={item.path}
-            className={({ isActive }) => `
-              flex flex-col items-center gap-1 px-3 py-2 rounded-lg
-              transition-colors text-[12px]
-              ${isActive ? 'text-[#00d9ff]' : 'text-[rgba(255,255,255,0.7)]'}
-            `}
+            onClick={() => navigate(item.path)}
+            className={`flex flex-col items-center justify-center p-3 transition-all duration-300 active:scale-90 ${
+              isActive ? 'bg-primary/20 text-secondary' : 'text-on-surface-variant/60'
+            }`}
           >
-            <span className="text-lg">{item.icon}</span>
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
-      </div>
+            <span className={`material-symbols-outlined ${isActive ? 'text-secondary' : ''}`}>
+              {item.icon}
+            </span>
+          </button>
+        );
+      })}
     </nav>
   );
 };
