@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    background-color: #13121b;
+    background-image: 
+      radial-gradient(circle at 50% -20%, #2900a0 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, #003641 0%, transparent 40%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+}
+
 @layer utilities {
   .glass-panel {
     background: rgba(255, 255, 255, 0.05);
@@ -49,5 +60,26 @@
   .circuit-bg {
     background-image: radial-gradient(circle at 2px 2px, rgba(108, 92, 231, 0.05) 1px, transparent 0);
     background-size: 24px 24px;
+  }
+
+  .score-ring {
+    transition: stroke-dashoffset 0.5s ease;
+  }
+
+  .dashboard-bg {
+    background-color: #13121b;
+    background-image: 
+      radial-gradient(circle at 50% -20%, #2900a0 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, #003641 0%, transparent 40%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+  
+  .bg-background {
+    background-color: #13121b !important;
+    background-image: 
+      radial-gradient(circle at 50% -20%, #2900a0 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, #003641 0%, transparent 40%) !important;
+    background-attachment: fixed !important;
   }
 }

@@ -50,7 +50,7 @@ const Loading = () => {
             <h1 className="text-[32px] font-bold leading-[40px] tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-secondary to-secondary-container">
               AttnPay
             </h1>
-            <p className="text-[18px] font-semibold leading-6 text-on-surface-variant/80 tracking-wide">
+            <p className="text-[18px] mb-8 font-semibold leading-6 text-on-surface-variant/80 tracking-wide">
               Sua atenção, seu poder.
             </p>
           </div>
