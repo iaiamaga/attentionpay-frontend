@@ -123,17 +123,7 @@ const Dashboard = () => {
                 </button>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-surface-container-highest/30 rounded-lg border border-white/5">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-secondary-container text-[20px]">rocket_launch</span>
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold">Bônus de Sequência</p>
-                  <p className="text-[12px] text-on-surface-variant">Mantenha seu foco por mais 2 dias para 1.5x</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </section>
       </main>
