@@ -2,13 +2,14 @@
 opencode.json
 
 # API Keys
-.env
+*.env
 
 # Arquivos de design e produto (privados)
 DESIGN.md
 PRD.md
 AGENTS.md
 
-./dist/
-./node_modules/
+dist/
+node_modules/
+
 
