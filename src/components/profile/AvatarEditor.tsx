@@ -1,0 +1,94 @@
+import { useState } from 'react';
+import { useAuth } from '@/context';
+
+const AVATAR_OPTIONS = [
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuDP9GRT06Ud0V7zkpLqZ9wI6yIG-yoakJSuaj4DFHDQ2ZnhvLRa5OR3sdIw2H2Lv0GPTA5O7Ixx6XDCskz9bwjnSJoiSpJweBx8RT98ycCdMdW46vInyJULEqImPMRCPSamWYz64uteMtYgygv43Md7tdVDBAnTIie0RC-LrHqVxtW7I-4NcLUNpKWbzxTLECERBwgPG6S1Guz5KecFSdFGjeo379htEhSX4o4dQyIl-fC2liGmbw1Fy2vrYGOtnhyN1-fASdr5zPQl',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCrh1ASNxsJom4MKV7OoLtpIwl_0ffDPvyUwQMAmomJzU3v0rLoYxmCxphKxE8ZYcvwylAYgTmEoeUiz8bUJus8K09FJl-3pnCnCArN41Gwp3yNcFsG8USKQUZgFFEDM7Ce3piUfNFpwCkG-lFI-g1Fsb11eRLun451lMjQsq-tK0fY31PyptHtQdyKM__xhhCF8_YYQ7R1mo6zNb7z9ppk4XbUNBYrmotYVAI8vm4-ngzZRjy8X0zKB13OaoMViflL2NJZZfF1n-5F',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuByAKZu44IwwcaVS1-YIaaN2opmVOx49jBMm0ydMhaub-8z8mR2vGJj1jMC9BJUJAwOgcnXIyLtZem2b15L6Z5KFe5IX6r7UgxHnuCBriBmz12ZNhtFqKRVQFK10uXltKGjrIIPNZjifutl3PJxrPsKFBW-kR5A3Z1_JCynZgkjvna9a9PtlYuXM1gifqa7jXp43t33GaqcAPzoIXJkFHsBKQwXZesIMQcgRon9FfQ4yuemeHv5vxyWAn6KmeK4vNspj61vGJhUJcL9',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuAkRhjGF0isTiDg1jZ3SU21_ebPd0nN7c2hpHRd7tNIAOe9Haaw0hMf4oogzYU0AoZRLdY7n_KDO-PyMYCnC7SQbehZx-gGDMLiBbby1NDPJ5rSkKH_Czsh01guMVknTbnQOfSFIgsVIxmxRJhxvfo0XJXI9vf0Fgrm8-XgSgOIwXRBZJTrSmjn7dmGDyD1wqbJJqBgxCfb2kel64qx61ahLG63t4E6AwubrEmeYGyLbMJW3fxUp6zrMVWje2HfnGqRZ_j2rX12DRdW',
+];
+
+interface AvatarEditorProps {
+  onAvatarChange?: (avatarUrl: string) => void;
+}
+
+const AvatarEditor = ({ onAvatarChange }: AvatarEditorProps) => {
+  const { user, updateUser } = useAuth();
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState(user?.avatar || AVATAR_OPTIONS[0]);
+
+  const handleAvatarClick = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleSelectAvatar = (avatarUrl: string) => {
+    setSelectedAvatar(avatarUrl);
+    updateUser({ avatar: avatarUrl });
+    onAvatarChange?.(avatarUrl);
+    setIsEditing(false);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="glass-panel rounded-xl p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="material-symbols-outlined text-secondary-container">face</span>
+          <h3 className="text-[18px] font-semibold leading-6">Editar Avatar</h3>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="relative mb-4">
+            <button
+              onClick={handleAvatarClick}
+              className="relative group"
+            >
+              <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-primary-container via-secondary-container to-primary shadow-[0_0_20px_rgba(108,92,231,0.3)] hover:shadow-[0_0_30px_rgba(108,92,231,0.5)] transition-all">
+                <img
+                  alt="Avatar Atual"
+                  className="w-full h-full rounded-full object-cover"
+                  src={selectedAvatar}
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-white text-sm">edit</span>
+              </div>
+            </button>
+          </div>
+
+          <p className="text-[14px] text-on-surface-variant/60">
+            Clique na foto para alterar
+          </p>
+        </div>
+
+        {isEditing && (
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <p className="text-[12px] font-bold tracking-wider text-on-surface-variant/50 uppercase mb-3">
+              Selecione um avatar
+            </p>
+            <div className="flex justify-center gap-3 flex-wrap">
+              {AVATAR_OPTIONS.map((avatar, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSelectAvatar(avatar)}
+                  className={`w-12 h-12 rounded-full p-0.5 transition-all hover:scale-110 ${
+                    selectedAvatar === avatar
+                      ? 'bg-gradient-to-tr from-primary-container to-secondary-container ring-2 ring-secondary-container'
+                      : 'bg-white/10 hover:bg-white/20'
+                  }`}
+                >
+                  <img
+                    alt={`Avatar ${index + 1}`}
+                    className="w-full h-full rounded-full object-cover"
+                    src={avatar}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AvatarEditor;

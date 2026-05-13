@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { AvatarEditor } from '@/components/profile';
 
 const SettingsTab = () => {
   const navigate = useNavigate();
@@ -6,6 +7,8 @@ const SettingsTab = () => {
   return (
     <div className="max-w-2xl mx-auto space-y-4">
       <div className="grid grid-cols-1 gap-4">
+        <AvatarEditor />
+
         <div className="glass-panel rounded-xl overflow-hidden">
           <div className="p-4 border-b border-white/10 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">account_circle</span>
