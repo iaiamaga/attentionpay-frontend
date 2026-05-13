@@ -4,13 +4,13 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 type Language = 'pt-BR' | 'en';
 
 interface TranslationStrings {
-  [key: string]: string | TranslationStrings;
+  [key: string]: string | string[] | TranslationStrings;
 }
 
 interface I18nContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string, params?: Record<string, string>) => string;
+  t: (key: string, params?: Record<string, string>) => string | string[];
   isRTL: boolean;
 }
 
@@ -30,6 +30,19 @@ const translations: Record<Language, TranslationStrings> = {
       previous: 'Anterior',
       search: 'Buscar',
       noResults: 'Nenhum resultado encontrado',
+      date: 'Data',
+      time: 'Hora',
+      events: 'Eventos',
+      score: 'Score',
+      hours: 'Horas',
+      gains: 'Ganhos',
+      attentionEvents: 'Eventos de Atenção',
+      scoreOfEvents: 'Score de Eventos',
+      welcome: 'Bem vind',
+      welcomeBack: ' ao seu Dashboard de hoje.',
+      weekDays: ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'],
+      weeklyView: 'Visão Semanal',
+      total: 'Total',
     },
     auth: {
       login: 'Entrar',
@@ -61,6 +74,9 @@ const translations: Record<Language, TranslationStrings> = {
       settings: 'Configurações',
       personalData: 'Dados Pessoais',
       connectedWallet: 'Wallet Conectada',
+      editAvatar: 'Editar Avatar',
+      clickToChange: 'Clique na foto para alterar',
+      selectAvatar: 'Selecione um avatar',
     },
     settings: {
       title: 'Configurações',
@@ -70,6 +86,39 @@ const translations: Record<Language, TranslationStrings> = {
       security: 'Segurança',
       connectedWallets: 'Wallets Conectadas',
       deleteAccount: 'Excluir Conta',
+      appearance: 'Aparência',
+      language: 'Idioma',
+      connectedAccounts: 'Contas Conectadas',
+    },
+    welcome: {
+      createAccount: 'Criar Conta',
+      startJourney: 'Comece sua jornada agora',
+      alreadyHaveAccount: 'Já possui uma conta?',
+      login: 'Entrar',
+      tagline: 'Sua atenção, seu poder.',
+    },
+    passwordRecovery: {
+      emailInstructions: 'Insira o e-mail associado à sua conta AttnPay e enviaremos as instruções de redefinição.',
+      resetPassword: 'Redefinir Senha',
+      checkEmail: 'Verifique seu e-mail',
+      emailSent: 'Enviamos as instruções de redefinição para o seu e-mail.',
+      backToLogin: 'Voltar para o Login',
+    },
+    support: {
+      title: 'Central de Ajuda',
+      searchPlaceholder: 'Como podemos ajudar?',
+      faq: 'Perguntas Frequentes',
+      contact: 'Fale Conosco',
+      ticket: 'Abrir Ticket',
+      timelineTitle: 'Histórico de Atendimentos',
+      status: {
+        pending: 'Pendente',
+        answered: 'Respondido',
+        resolved: 'Resolvido',
+      },
+    },
+    footer: {
+      rights: 'Todos os direitos reservados.',
     },
   },
   'en': {
@@ -87,6 +136,19 @@ const translations: Record<Language, TranslationStrings> = {
       previous: 'Previous',
       search: 'Search',
       noResults: 'No results found',
+      date: 'Date',
+      time: 'Time',
+      events: 'Events',
+      score: 'Score',
+      hours: 'Hours',
+      gains: 'Gains',
+      attentionEvents: 'Attention Events',
+      scoreOfEvents: 'Score of Events',
+      welcome: 'Welcome',
+      welcomeBack: ' to your Dashboard today.',
+      weekDays: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+      weeklyView: 'Weekly View',
+      total: 'Total',
     },
     auth: {
       login: 'Login',
@@ -118,6 +180,9 @@ const translations: Record<Language, TranslationStrings> = {
       settings: 'Settings',
       personalData: 'Personal Data',
       connectedWallet: 'Connected Wallet',
+      editAvatar: 'Edit Avatar',
+      clickToChange: 'Click on the photo to change',
+      selectAvatar: 'Select an avatar',
     },
     settings: {
       title: 'Settings',
@@ -127,6 +192,39 @@ const translations: Record<Language, TranslationStrings> = {
       security: 'Security',
       connectedWallets: 'Connected Wallets',
       deleteAccount: 'Delete Account',
+      appearance: 'Appearance',
+      language: 'Language',
+      connectedAccounts: 'Connected Accounts',
+    },
+    welcome: {
+      createAccount: 'Create Account',
+      startJourney: 'Start your journey now',
+      alreadyHaveAccount: 'Already have an account?',
+      login: 'Login',
+      tagline: 'Your attention, your power.',
+    },
+    passwordRecovery: {
+      emailInstructions: 'Enter the email associated with your AttnPay account and we will send the reset instructions.',
+      resetPassword: 'Reset Password',
+      checkEmail: 'Check your email',
+      emailSent: 'We have sent the reset instructions to your email.',
+      backToLogin: 'Back to Login',
+    },
+    support: {
+      title: 'Help Center',
+      searchPlaceholder: 'How can we help?',
+      faq: 'FAQ',
+      contact: 'Contact Us',
+      ticket: 'Open Ticket',
+      timelineTitle: 'Support History',
+      status: {
+        pending: 'Pending',
+        answered: 'Answered',
+        resolved: 'Resolved',
+      },
+    },
+    footer: {
+      rights: 'All rights reserved.',
     },
   },
 };
@@ -142,16 +240,20 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     setStoredLanguage(lang);
   }, [setStoredLanguage]);
 
-  const t = useCallback((key: string, params?: Record<string, string>): string => {
+  const t = useCallback((key: string, params?: Record<string, string>): string | string[] => {
     const keys = key.split('.');
-    let value: string | TranslationStrings = translations[language];
+    let value: unknown = translations[language];
     
     for (const k of keys) {
-      if (typeof value === 'object' && value !== null && k in value) {
-        value = value[k];
+      if (typeof value === 'object' && value !== null && k in (value as Record<string, unknown>)) {
+        value = (value as Record<string, unknown>)[k];
       } else {
         return key;
       }
+    }
+
+    if (Array.isArray(value)) {
+      return value;
     }
 
     if (typeof value !== 'string') {

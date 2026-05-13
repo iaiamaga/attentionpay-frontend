@@ -1,6 +1,8 @@
 import GlassCard from '@/components/common/GlassCard';
+import { useI18n } from '@/context';
 
 const AttentionEvents = () => {
+  const { t } = useI18n();
   const events = 49;
   const scoreEvents = events / 10;
   
@@ -17,7 +19,7 @@ const AttentionEvents = () => {
     <GlassCard className="p-6 relative overflow-hidden">
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-[18px] font-semibold leading-6 text-on-surface-variant uppercase tracking-wider">Eventos de Atenção</h2>
+          <h2 className="text-[18px] font-semibold leading-6 text-on-surface-variant uppercase tracking-wider">{t('common.attentionEvents')}</h2>
         </div>
       </div>
       
@@ -49,22 +51,22 @@ const AttentionEvents = () => {
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className="text-[48px] font-bold text-on-surface">{scoreEvents}%</span>
-            <span className="text-[12px] font-bold tracking-wider text-on-surface-variant">Eventos</span>
+            <span className="text-[12px] font-bold tracking-wider text-on-surface-variant">{t('common.events')}</span>
           </div>
         </div>
       </div>
       
       <div className="grid grid-cols-3 gap-4 mt-6 border-t border-white/5 pt-6">
         <div className="text-center border-r border-white/5">
-          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Horas</span>
+          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">{t('common.hours')}</span>
           <span className="text-[18px] font-bold text-on-surface">{hours}</span>
         </div>
         <div className="text-center border-r border-white/5">
-          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Score de Eventos</span>
+          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">{t('common.events')}</span>
           <span className="text-[18px] font-bold text-primary">{events}</span>
         </div>
         <div className="text-center">
-          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Ganhos</span>
+          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">{t('common.gains')}</span>
           <span className="text-[18px] font-bold text-secondary-container">$ 8</span>
         </div>
       </div>

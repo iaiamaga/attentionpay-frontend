@@ -1,7 +1,7 @@
 import logoImage from '@/assets/logo-attnpay.png';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'gg';
   variant?: 'full' | 'icon';
   className?: string;
   onClick?: () => void;
@@ -11,12 +11,14 @@ const sizes = {
   sm: 'w-8 h-8',
   md: 'w-10 h-10',
   lg: 'w-14 h-14',
+  gg: 'w-20 h-20',
 };
 
 const textSizes = {
   sm: 'text-[24px]',
   md: 'text-[28px]',
   lg: 'text-[32px]',
+  gg: 'text-[40px]',
 };
 
 const Logo = ({ size = 'md', variant = 'full', className = '' }: LogoProps) => {

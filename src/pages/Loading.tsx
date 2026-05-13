@@ -35,11 +35,11 @@ const Loading = () => {
           <div className="absolute w-[200%] h-[200%] top-[-50%] left-[-50%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent blur-[100px]" />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center text-center max-w-md w-full animate-in fade-in zoom-in duration-1000">
-          <div className="mb-xl relative group">
-            <div className="absolute inset-0 bg-secondary-container/20 blur-3xl rounded-full scale-150 group-hover:scale-[1.75] transition-transform duration-700" />
+      <div className="relative z-10 flex flex-col items-center text-center max-w-md w-full animate-in fade-in zoom-in duration-1000">
+        <div className="mb-xl relative gap-16 group">
+          <div className="absolute inset-0 bg-secondary-container/20 blur-3xl rounded-full scale-150 group-hover:scale-[1.75] transition-transform duration-700" />
             <div className="relative w-48 h-48 glass-panel rounded-full flex items-center justify-center border-white/20 shadow-[0_0_50px_rgba(0,217,255,0.2)]">
-              <Logo variant="icon" size="lg" />
+              <Logo variant="icon" size="gg" />
             </div>
           </div>
 

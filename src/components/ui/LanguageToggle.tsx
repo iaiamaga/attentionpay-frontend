@@ -1,22 +1,24 @@
+import { useI18n } from '@/context';
+
 interface LanguageToggleProps {
-  currentLanguage?: 'pt' | 'en';
-  onChange?: (lang: 'pt' | 'en') => void;
   showLabel?: boolean;
   className?: string;
 }
 
 const LanguageToggle = ({ 
-  currentLanguage = 'pt', 
-  onChange,
   showLabel = true,
   className = '' 
 }: LanguageToggleProps) => {
+  const { language, setLanguage } = useI18n();
+
+  const currentLang = language === 'pt-BR' ? 'pt' : 'en';
+
   return (
     <div className={`flex items-center gap-1 px-2 py-1 rounded-full bg-surface-container-high/50 border border-white/5 hover:bg-white/10 transition-colors text-[12px] font-bold tracking-wider ${className}`}>
       <button
-        onClick={() => onChange?.('pt')}
+        onClick={() => setLanguage('pt-BR')}
         className={`px-1 transition-colors ${
-          currentLanguage === 'pt' 
+          currentLang === 'pt' 
             ? 'text-secondary-fixed-dim' 
             : 'text-on-surface-variant/50 hover:text-on-surface'
         }`}
@@ -25,9 +27,9 @@ const LanguageToggle = ({
       </button>
       {showLabel && <span className="text-on-surface-variant/30">/</span>}
       <button
-        onClick={() => onChange?.('en')}
+        onClick={() => setLanguage('en')}
         className={`px-1 transition-colors ${
-          currentLanguage === 'en' 
+          currentLang === 'en' 
             ? 'text-secondary-fixed-dim' 
             : 'text-on-surface-variant/50 hover:text-on-surface'
         }`}

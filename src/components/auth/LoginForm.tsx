@@ -48,7 +48,7 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label={t('auth.email')}
+            label={t('auth.email') as string}
             icon="alternate_email"
             type="email"
             value={email}
