@@ -55,6 +55,10 @@ const translations: Record<Language, TranslationStrings> = {
       createAccount: 'Criar Conta',
       alreadyHaveAccount: 'Já possui conta?',
       welcomeBack: 'Bem-vindo de volta',
+      tagline: 'Acesse o sistema com seu email ou carteira web3.',
+      continue: "Ou continue com",
+      donothaveAccount: "Não possui conta?",
+      cadastrar: "Cadastre-se",
     },
     dashboard: {
       title: 'Dashboard',
@@ -95,7 +99,8 @@ const translations: Record<Language, TranslationStrings> = {
       startJourney: 'Comece sua jornada agora',
       alreadyHaveAccount: 'Já possui uma conta?',
       login: 'Entrar',
-      tagline: 'Sua atenção, seu poder.',
+      subtitle: 'Bem-vindo ao AtentionPay',
+      tagline: 'Sua atenção, seu poder. Escolha como começar.',
     },
     passwordRecovery: {
       emailInstructions: 'Insira o e-mail associado à sua conta AttnPay e enviaremos as instruções de redefinição.',
@@ -161,6 +166,10 @@ const translations: Record<Language, TranslationStrings> = {
       createAccount: 'Create Account',
       alreadyHaveAccount: 'Already have an account?',
       welcomeBack: 'Welcome back',
+      tagline: 'Access the system with your email or web3 wallet.',
+      continue: "Or continue with",
+      donothaveAccount: "Don't have an account?",
+      cadastrar: "Sign Up",
     },
     dashboard: {
       title: 'Dashboard',
@@ -201,7 +210,8 @@ const translations: Record<Language, TranslationStrings> = {
       startJourney: 'Start your journey now',
       alreadyHaveAccount: 'Already have an account?',
       login: 'Login',
-      tagline: 'Your attention, your power.',
+      subtitle: 'Welcome to AtentionPay',
+      tagline: 'Your attention, your power. Choose how to start.',
     },
     passwordRecovery: {
       emailInstructions: 'Enter the email associated with your AttnPay account and we will send the reset instructions.',

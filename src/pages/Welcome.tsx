@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import IdiomButtom from '@/components/common/IdiomButton';
 import Logo from '@/components/ui/Logo';
+import { useI18n } from '@/context';
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   return (
     <div className="min-h-screen bg-background text-on-background relative overflow-hidden">
@@ -33,9 +35,9 @@ const Welcome = () => {
           </h1>
 
           <div className="gap-4 flex flex-col">
-            <h2 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em]">Bem-vindo ao AttnPay</h2>
+            <h2 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em]">{t('welcome.subtitle')}</h2>
             <p className="text-[16px] leading-6 text-on-surface-variant/80 px-4">
-              Sua atenção, seu poder. Escolha como deseja começar.
+              {t('welcome.tagline')}
             </p>
           </div>
         </div>
@@ -46,8 +48,8 @@ const Welcome = () => {
             className="w-full py-4 px-4 bg-primary-container rounded-xl flex items-center justify-between group neon-glow-primary active:scale-[0.98] transition-all"
           >
             <div className="flex flex-col items-start">
-              <span className="text-[18px] font-semibold text-on-primary-container">Criar Conta</span>
-              <span className="text-[12px] text-on-primary-container/70">Comece sua jornada agora</span>
+              <span className="text-[18px] font-semibold text-on-primary-container">{t('welcome.createAccount')}</span>
+              <span className="text-[12px] text-on-primary-container/70">{t('welcome.startJourney')}</span>
             </div>
             <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
               <span className="material-symbols-outlined text-white">chevron_right</span>
@@ -59,8 +61,8 @@ const Welcome = () => {
             className="w-full py-4 px-4 glass-panel rounded-xl flex items-center justify-between group active:scale-[0.98] transition-all"
           >
             <div className="flex flex-col items-start">
-              <span className="text-[18px] font-semibold text-on-surface">Entrar</span>
-              <span className="text-[12px] text-on-surface-variant/60">Já possui uma conta?</span>
+              <span className="text-[18px] font-semibold text-on-surface">{t('welcome.login')}</span>
+              <span className="text-[12px] text-on-surface-variant/60">{t('welcome.alreadyHaveAccount')}</span>
             </div>
             <span className="material-symbols-outlined text-secondary-fixed-dim">login</span>
           </button>

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Logo from '@/components/ui/Logo';
 import LanguageToggle from '@/components/ui/LanguageToggle';
+import { useI18n } from '@/context';
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ const AuthLayout = ({
   showLanguageToggle = true,
   backgroundVariant = 'gradient'
 }: AuthLayoutProps) => {
+  const { t } = useI18n();
   const backgroundStyles = {
     default: 'bg-background',
     gradient: `
@@ -45,7 +47,7 @@ const AuthLayout = ({
       {/* Footer */}
       <footer className="py-8 px-container-margin text-center">
         <p className="text-[12px] font-bold tracking-widest text-on-surface-variant/30 uppercase">
-          © 2024 AttnPay Ecosystem. Todos os direitos reservados.
+          © 2024 AttnPay Ecosystem. {t('footer.rights')}
         </p>
       </footer>
     </div>

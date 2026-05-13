@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '@/components/ui/Logo';
+import LanguageToggle from '@/components/ui/LanguageToggle';
+import { useI18n } from '@/context';
 
 const PasswordRecovery = () => {
   const navigate = useNavigate();
+  const { t } = useI18n();
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
 
@@ -20,11 +23,7 @@ const PasswordRecovery = () => {
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin py-4 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(108,92,231,0.2)]">
         <Logo size="sm" />
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-1 px-2 py-1 rounded-full bg-surface-container-high/50 border border-white/5 hover:bg-white/10 transition-colors text-[12px] font-bold tracking-wider">
-            <span className="text-primary">PT</span>
-            <span className="opacity-30">|</span>
-            <span className="text-on-surface-variant">EN</span>
-          </button>
+          <LanguageToggle />
           <span className="material-symbols-outlined text-on-surface-variant/70 hover:bg-white/10 p-2 rounded-full transition-colors cursor-pointer">help_outline</span>
         </div>
       </header>
@@ -36,7 +35,7 @@ const PasswordRecovery = () => {
             className="inline-flex items-center gap-1 text-secondary text-[12px] font-bold tracking-wider hover:translate-x-[-4px] transition-transform active:scale-95 cursor-pointer"
           >
             <span className="material-symbols-outlined text-lg">arrow_back</span>
-            VOLTAR PARA LOGIN
+            {t('passwordRecovery.backToLogin').toString().toUpperCase()}
           </a>
 
           <section className="glass-panel rounded-xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
@@ -44,9 +43,9 @@ const PasswordRecovery = () => {
               <div className="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-4 border border-primary/20 neon-glow-primary">
                 <span className="material-symbols-outlined text-primary text-[32px]">lock_reset</span>
               </div>
-              <h2 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em] mb-1">Esqueceu a senha?</h2>
+              <h2 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em] mb-1">{t('auth.forgotPassword')}</h2>
               <p className="text-[14px] leading-5 text-on-surface-variant">
-                Insira o e-mail associado à sua conta AttnPay e enviaremos as instruções de redefinição.
+                {t('passwordRecovery.emailInstructions')}
               </p>
             </header>
 
@@ -55,15 +54,15 @@ const PasswordRecovery = () => {
                 <div className="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mx-auto mb-4 border border-secondary-container/30">
                   <span className="material-symbols-outlined text-secondary-container text-[32px]" style={{ fontVariationSettings: "'FILL' 1" }}>mark_email_read</span>
                 </div>
-                <h3 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em] mb-2">Email Enviado!</h3>
+                <h3 className="text-[24px] font-semibold leading-[32px] text-on-surface tracking-[-0.01em] mb-2">{t('passwordRecovery.checkEmail')}</h3>
                 <p className="text-[16px] leading-6 text-on-surface-variant mb-6">
-                  Enviamos as instruções de recuperação para <span className="text-secondary font-semibold">{email}</span>. Verifique sua caixa de entrada.
+                  {t('passwordRecovery.emailSent')}
                 </p>
                 <button 
                   onClick={() => navigate('/login')}
                   className="w-full py-4 bg-primary-container text-on-primary-container text-[18px] font-semibold leading-6 rounded-lg neon-glow-primary hover:brightness-110 transition-all"
                 >
-                  Voltar para Login
+                  {t('passwordRecovery.backToLogin')}
                 </button>
               </div>
             ) : (
@@ -71,7 +70,7 @@ const PasswordRecovery = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-1">
                     <label className="text-[12px] font-bold tracking-wider text-on-surface-variant px-1 block uppercase">
-                      E-MAIL DO USUÁRIO
+                      {t('auth.email')}
                     </label>
                     <div className="relative group neon-border-focus transition-all duration-300 rounded-lg bg-surface-container-low border border-white/5">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60 group-focus-within:text-secondary">mail</span>
@@ -79,55 +78,25 @@ const PasswordRecovery = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-transparent border-none py-4 pl-12 pr-4 rounded-lg text-[16px] leading-6 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0"
                         placeholder="nome@exemplo.com"
+                        className="w-full bg-transparent text-on-surface pl-12 pr-4 py-3 text-[16px] outline-none"
                         required
                       />
                     </div>
                   </div>
 
-                  <button
+                  <button 
                     type="submit"
                     className="w-full py-4 bg-primary-container text-on-primary-container text-[18px] font-semibold leading-6 rounded-lg shadow-[0_0_20px_rgba(108,92,231,0.2)] hover:shadow-[0_0_30px_rgba(108,92,231,0.4)] active:scale-95 transition-all flex items-center justify-center gap-2"
                   >
-                    Enviar Instruções
-                    <span className="material-symbols-outlined text-xl">send</span>
+                    {t('passwordRecovery.resetPassword')}
                   </button>
                 </form>
-
-                <div className="flex items-center gap-4 my-6">
-                  <div className="flex-grow h-[1px] bg-white/10" />
-                  <span className="text-[12px] font-bold tracking-wider text-on-surface-variant/40">OU</span>
-                  <div className="flex-grow h-[1px] bg-white/10" />
-                </div>
-
-                <button className="w-full py-4 glass-panel rounded-lg text-[18px] font-semibold leading-6 text-on-surface hover:bg-white/10 transition-colors active:scale-95">
-                  Suporte Técnico
-                </button>
               </>
             )}
           </section>
-
-          <footer className="text-center space-y-4">
-            <p className="text-[14px] leading-5 text-on-surface-variant/60">
-              Problemas ao receber o código? <a className="text-secondary hover:underline" href="#">Tentar outro método</a>
-            </p>
-          </footer>
         </div>
       </main>
-
-      <aside className="hidden lg:flex fixed right-10 top-1/2 -translate-y-1/2 w-1/3 flex-col gap-6 pointer-events-none opacity-40">
-        <div className="glass-panel p-12 rounded-full aspect-square flex items-center justify-center border border-primary/20 relative overflow-hidden">
-          <Logo variant="icon" size="lg" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
-        </div>
-      </aside>
-
-      <footer className="p-6 text-center">
-        <p className="text-[12px] font-bold tracking-widest text-on-surface-variant/40 uppercase">
-          Secure Gateway • AttnPay Protocol v4.0
-        </p>
-      </footer>
     </div>
   );
 };

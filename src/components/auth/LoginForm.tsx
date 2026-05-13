@@ -42,7 +42,7 @@ const LoginForm = () => {
             {t('auth.welcomeBack')}
           </h1>
           <p className="text-[14px] leading-5 text-on-surface-variant">
-            Acesse o núcleo do sistema com sua credencial.
+            {t('auth.tagline')}
           </p>
         </div>
 
@@ -99,12 +99,12 @@ const LoginForm = () => {
 
         <div className="mt-6 text-center">
           <p className="text-[14px] leading-5 text-on-surface-variant">
-            Não tem conta? 
-            <button 
+           {t('auth.donothaveAccount')}
+            <button   
               onClick={() => navigate('/signup')}
               className="text-secondary font-semibold hover:underline decoration-secondary-container decoration-2 underline-offset-4"
             >
-              Cadastre-se
+             {t('auth.cadastrar')}
             </button>
           </p>
         </div>

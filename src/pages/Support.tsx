@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { DashboardLayout, PageContainer } from '@/components/layout';
 import { Timeline } from '@/components/support';
+import { useI18n } from '@/context';
 
 const Support = () => {
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   const timelineEvents = [
     { 
@@ -44,7 +46,7 @@ const Support = () => {
         <section className="mb-6">
           <div className="flex items-end justify-between mb-4">
             <div>
-              <h2 className="text-[24px] font-semibold leading-[32px] text-primary tracking-[-0.01em]">Atividades</h2>
+              <h2 className="text-[24px] font-semibold leading-[32px] text-primary tracking-[-0.01em]">{t('profile.activities')}</h2>
               <p className="text-[14px] leading-5 text-on-surface-variant">Fluxo consolidado de AttnPay</p>
             </div>
           </div>
