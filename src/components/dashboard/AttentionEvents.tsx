@@ -1,31 +1,23 @@
 import GlassCard from '@/components/common/GlassCard';
 
-interface AttentionScoreProps {
-  score: number;
-  level?: string;
-  hoursPerDay?: string;
-  points?: string;
-  gains?: string;
-}
+const AttentionEvents = () => {
+  const events = 49;
+  const scoreEvents = events / 10;
+  
+  const hours = events > 0 
+    ? `${Math.floor(events * 0.1)}h ${(events * 3) % 60}m`
+    : '0h 0m';
 
-const AttentionScore = ({ 
-  score = 82, 
-  level = 'Diamante',
-  hoursPerDay = '6.4h',
-  points = '1,240',
-  gains = '₿ 0.042'
-}: AttentionScoreProps) => {
   const radius = 88;
   const circumference = 2 * Math.PI * radius;
-  const progress = (score / 100) * circumference;
+  const progress = (scoreEvents / 100) * circumference;
   const offset = circumference - progress;
 
   return (
     <GlassCard className="p-6 relative overflow-hidden">
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-[18px] font-semibold leading-6 text-on-surface-variant uppercase tracking-wider">Attention Score</h2>
-          <p className="text-[12px] text-secondary">Nível: {level}</p>
+          <h2 className="text-[18px] font-semibold leading-6 text-on-surface-variant uppercase tracking-wider">Eventos de Atenção</h2>
         </div>
       </div>
       
@@ -56,28 +48,28 @@ const AttentionScore = ({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-[48px] font-bold text-on-surface">{score}</span>
-            <span className="text-[12px] font-bold tracking-wider text-on-surface-variant">PONTOS</span>
+            <span className="text-[48px] font-bold text-on-surface">{scoreEvents}%</span>
+            <span className="text-[12px] font-bold tracking-wider text-on-surface-variant">Eventos</span>
           </div>
         </div>
       </div>
       
       <div className="grid grid-cols-3 gap-4 mt-6 border-t border-white/5 pt-6">
         <div className="text-center border-r border-white/5">
-          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Horas/Dia</span>
-          <span className="text-[18px] font-bold text-on-surface">{hoursPerDay}</span>
+          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Horas</span>
+          <span className="text-[18px] font-bold text-on-surface">{hours}</span>
         </div>
         <div className="text-center border-r border-white/5">
-          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Pontos</span>
-          <span className="text-[18px] font-bold text-primary">{points}</span>
+          <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Score de Eventos</span>
+          <span className="text-[18px] font-bold text-primary">{events}</span>
         </div>
         <div className="text-center">
           <span className="text-[12px] font-bold tracking-wider text-on-surface-variant block mb-1">Ganhos</span>
-          <span className="text-[18px] font-bold text-secondary-container">{gains}</span>
+          <span className="text-[18px] font-bold text-secondary-container">$ 8</span>
         </div>
       </div>
     </GlassCard>
   );
 };
 
-export default AttentionScore;
+export default AttentionEvents;

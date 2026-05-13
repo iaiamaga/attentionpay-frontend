@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { AvatarEditor } from '@/components/profile';
+import phantomIcon from '@/assets/icons/phantom_solana.png';
+import walletConnectIcon from '@/assets/icons/wallet_connect_transp.png';
 
 const SettingsTab = () => {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ const SettingsTab = () => {
                   <img 
                     alt="Phantom Wallet Icon" 
                     className="w-8 h-8 object-contain" 
-                    src="https://lh3.googleusercontent.com/aida/ADBb0uiajNc7E5Ln3Vq-dEdEjJh2gza0gpgQHX59hmc57XtkM5zHGNkJxCiRiEy6fD74MUkKI6K1h3e7BGlDSkxl6h-0uiCb2Qh-OYO5RsN7aOuPB1rBcbNACf1Rr9dVIbUV9EQMMAYkLUkLdWZ_W59iAKbvTyDfnDyJmPuIkH3rovoDT9RnSuaCtLD1h-k2Mmcs8d6sdanX3Dqnov96mePZJbff52GqP2RuODjE1hIRbB6AmEl9_JgMpSVr20F7na57QQSfGlxpLE6Vaw"
+                    src={phantomIcon}
                   />
                 </div>
                 <div className="text-left">
@@ -66,7 +68,7 @@ const SettingsTab = () => {
                   <img 
                     alt="WalletConnect Icon" 
                     className="w-8 h-8 object-contain" 
-                    src="https://lh3.googleusercontent.com/aida/ADBb0uh4aYRtQJHKh0pHic1uFEXra8S54ekSbLX0RSyqSnZeWzcbI1tOvHwPDJVtpvQzFMFtd2536RBfuVlFH9LmQ-UOHCCDlVJbBZ26T7mAGAhwx7rrMu3vJalQYN21Mww8f5yO22QTLnnOHsmVg4XLu4C97P-CsG9GFllle0g3FnVhV99MnsRx2zImOULzzCHKua0gJ6mKKeV2i_anPdVv1FuVvTIHbm0rji7FGdw7RYT6rS5cJPZIJKfXylmGk_lfTl1q1xM8eRcK5Ew"
+                    src={walletConnectIcon}
                   />
                 </div>
                 <div className="text-left">

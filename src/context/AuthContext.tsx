@@ -1,6 +1,7 @@
 import { createContext, useContext, ReactNode, useState, useEffect, useCallback } from 'react';
 import { User } from '@/types';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import blueAvatar from '@/assets/images/blue-avatar.png';
 
 interface AuthContextType {
   user: User | null;
@@ -19,7 +20,7 @@ const MOCK_USER: User = {
   email: 'alex.rivera@attnpay.tech',
   name: 'Alexandre Novaes de Oliveira',
   phone: '+55 11 99999-9999',
-  avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrh1ASNxsJom4MKV7OoLtpIwl_0ffDPvyUwQMAmomJzU3v0rLoYxmCxphKxE8ZYcvwylAYgTmEoeUiz8bUJus8K09FJl-3pnCnCArN41Gwp3yNcFsG8USKQUZgFFEDM7Ce3piUfNFpwCkG-lFI-g1Fsb11eRLun451lMjQsq-tK0fY31PyptHtQdyKM__xhhCF8_YYQ7R1mo6zNb7z9ppk4XbUNBYrmotYVAI8vm4-ngzZRjy8X0zKB13OaoMViflL2NJZZfF1n-5F',
+  avatar: blueAvatar,
   language: 'pt-BR',
   createdAt: new Date('2024-03-01'),
 };

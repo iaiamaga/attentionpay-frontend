@@ -8,12 +8,12 @@ interface WeeklyData {
 
 interface WeeklyChartProps {
   data?: WeeklyData[];
-  totalPoints?: number;
+  totalEvents?: number;
 }
 
 const WeeklyChart = ({ 
   data, 
-  totalPoints = 574 
+  totalEvents = 574 
 }: WeeklyChartProps) => {
   const defaultData: WeeklyData[] = [
     { day: 'SEG', height: 'h-16', active: false },
@@ -33,7 +33,7 @@ const WeeklyChart = ({
         <h3 className="text-[18px] font-semibold leading-6">Visão Semanal</h3>
         <div className="flex items-center gap-2">
           <span className="text-[12px] font-bold tracking-wider text-on-surface-variant">Total:</span>
-          <span className="text-[16px] font-bold text-primary">{totalPoints} pts</span>
+          <span className="text-[16px] font-bold text-primary">{totalEvents} events</span>
         </div>
       </div>
       

@@ -1,3 +1,5 @@
+import phantomIcon from '@/assets/icons/phantom_solana.png';
+
 interface WalletCardProps {
   name?: string;
   address?: string;
@@ -8,7 +10,7 @@ interface WalletCardProps {
 const WalletCard = ({ 
   name = 'Phantom Wallet', 
   address = '7a8b9c...d3e4f5',
-  icon = 'https://lh3.googleusercontent.com/aida/ADBb0uiajNc7E5Ln3Vq-dEdEjJh2gza0gpgQHX59hmc57XtkM5zHGNkJxCiRiEy6fD74MUkKI6K1h3e7BGlDSkxl6h-0uiCb2Qh-OYO5RsN7aOuPB1rBcbNACf1Rr9dVIbUV9EQMMAYkLUkLdWZ_W59iAKbvTyDfnDyJmPuIkH3rovoDT9RnSuaCtLD1h-k2Mmcs8d6sdanX3Dqnov96mePZJbff52GqP2RuODjE1hIRbB6AmEl9_JgMpSVr20F7na57QQSfGlxpLE6Vaw',
+  icon = phantomIcon,
   onClick
 }: WalletCardProps) => {
   return (

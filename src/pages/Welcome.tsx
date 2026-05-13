@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import IdiomButtom from '@/components/common/IdiomButton';
+import Logo from '@/components/ui/Logo';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -23,11 +24,7 @@ const Welcome = () => {
           <div className="relative group">
             <div className="absolute inset-0 bg-secondary-container blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
             <div className="relative w-24 h-24 glass-panel rounded-[2rem] flex items-center justify-center border-secondary/20">
-              <img 
-                alt="AttnPay Logo" 
-                className="w-16 h-16 object-contain" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0ujpB2epb8pSXcwgPfdulQ_iNUzHE2JvBhBryAKBe7Kz7tSmBn-W6cTanZns0hGr44suPYJGNJtdMN-M0kP8S1AGPV1xoRMizecJjXYPDh2iwvn4nqP_-dv-hsR0ciFAD9YKxHoWjfiLLBvy8xdk8lYBvNooKDg0G08gMuMR42ynIRSLt9J2SYMVwKMx3QPJ6wgENls9TCfHQgZWnZ7kNA0ArS_M291U_nMzsZPxOUrYhCLvKzRASAVzaFMy_ygMKgMwn8uw6rvwYW4"
-              />
+              <Logo variant="icon" size="lg" />
             </div>
           </div>
 

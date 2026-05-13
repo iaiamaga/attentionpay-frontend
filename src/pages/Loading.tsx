@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Logo from '@/components/ui/Logo';
 
 const Loading = () => {
   const navigate = useNavigate();
@@ -38,11 +39,7 @@ const Loading = () => {
           <div className="mb-xl relative group">
             <div className="absolute inset-0 bg-secondary-container/20 blur-3xl rounded-full scale-150 group-hover:scale-[1.75] transition-transform duration-700" />
             <div className="relative w-48 h-48 glass-panel rounded-full flex items-center justify-center border-white/20 shadow-[0_0_50px_rgba(0,217,255,0.2)]">
-              <img 
-                alt="AttnPay Logo" 
-                className="w-4/5 h-4/5 object-contain rounded-full" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0uh_orTQ7XTOJQriU85CGf0sxrRl8t0g-QLmmEceMNIaW7tCbnmPqqHlx1Fm1MaffZ5_skjP_xSUdtv1afoayospmR-ZUi4i9gVDYCSBDCc_brNR5Beyx3NanIdA4bzDgs-t_R2oWlJ9wCzK2FvxX5xxO2mSGVI5_lSf2uewsAZmfAx2GMmDFdvc1hdWojypqH2rxRCF0ank2hkZO98HGFs1RYArK35uphDw32L_z4VRtQE01amz9EWg1JkPOGHn4gak7lAKw5PL1Bc"
-              />
+              <Logo variant="icon" size="lg" />
             </div>
           </div>
 

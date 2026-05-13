@@ -1,5 +1,5 @@
 import { DashboardLayout } from '@/components/layout';
-import { WelcomeCard, AttentionScore, WeeklyChart } from '@/components/dashboard';
+import { WelcomeCard, AttentionEvents, WeeklyChart } from '@/components/dashboard';
 
 const Dashboard = () => {
   return (
@@ -8,7 +8,7 @@ const Dashboard = () => {
         <WelcomeCard />
         
         <section className="space-y-6">
-          <AttentionScore score={82} />
+          <AttentionEvents />
           <WeeklyChart />
         </section>
       </div>
