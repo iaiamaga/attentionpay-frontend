@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context';
+import { useAuth, useI18n } from '@/context';
 import Input from '@/components/common/Input';
 import ActionButton from '@/components/ui/ActionButton';
 import SocialButton from '@/components/ui/SocialButton';
 import Divider from '@/components/ui/Divider';
 import GlassCard from '@/components/common/GlassCard';
-import { useI18n } from '@/context'; 
-
-
-const { t } = useI18n();
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const { login, isLoading } = useAuth();
+  const { t } = useI18n();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
