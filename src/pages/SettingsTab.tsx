@@ -81,7 +81,7 @@ const SettingsTab = () => {
         </button>
 
         <button className="w-full glass-panel p-4 rounded-xl text-error font-semibold text-[18px] leading-6 text-center border border-error/20 hover:bg-error/5 transition-colors">
-          Encerrar Sessão
+          Excluir Conta
         </button>
 
         <div className="py-6 text-center">
