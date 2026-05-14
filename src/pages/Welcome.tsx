@@ -25,8 +25,8 @@ const Welcome = () => {
         <div className="flex flex-col items-center text-center max-w-md w-full gap-6">
           <div className="relative group">
             <div className="absolute inset-0 bg-secondary-container blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
-            <div className="relative w-24 h-24 glass-panel rounded-[2rem] flex items-center justify-center border-secondary/20">
-              <Logo variant="icon" size="lg" />
+            <div className=" flex items-center justify-center">
+              <Logo variant="icon" size="gg" />
             </div>
           </div>
 

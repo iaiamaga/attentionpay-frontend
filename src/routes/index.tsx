@@ -9,7 +9,6 @@ import PasswordRecovery from '@/pages/PasswordRecovery';
 import Verification from '@/pages/Verification';
 import Dashboard from '@/pages/Dashboard';
 import Profile from '@/pages/Profile';
-import ConnectWallet from '@/pages/ConnectWallet';
 
 const AppRoutes = () => {
   return (
@@ -37,14 +36,6 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Profile />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/connect-wallet"
-        element={
-          <ProtectedRoute>
-            <ConnectWallet />
           </ProtectedRoute>
         }
       />

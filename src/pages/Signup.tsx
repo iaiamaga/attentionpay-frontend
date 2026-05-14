@@ -6,6 +6,7 @@ const Signup = () => {
     <AuthLayout>
       <PageContainer maxWidth="md">
         <SignupForm />
+        
       </PageContainer>
     </AuthLayout>
   );

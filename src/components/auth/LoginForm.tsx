@@ -53,7 +53,7 @@ const LoginForm = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="nome@exemplo.com"
+            placeholder={t('auth.placeholderEmail') as string}
             required
           />
 
@@ -75,7 +75,7 @@ const LoginForm = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder={t('auth.placeholderPassword') as string}
               required
             />
           </div>
@@ -90,7 +90,7 @@ const LoginForm = () => {
           </ActionButton>
         </form>
 
-        <Divider label="OU CONTINUE COM" />
+        <Divider label={t('auth.continueWith') as string} />
 
         <div className="grid grid-cols-2 gap-2">
           <SocialButton provider="google" onClick={handleGoogleLogin} />

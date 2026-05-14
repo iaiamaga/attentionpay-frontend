@@ -1,5 +1,5 @@
 import GlassCard from '@/components/common/GlassCard';
-import { useAuth } from '@/context';
+import { useAuth, useI18n } from '@/context';
 
 interface PersonalDataItem {
   label: string;
@@ -13,11 +13,11 @@ interface PersonalDataCardProps {
 
 const PersonalDataCard = ({ data }: PersonalDataCardProps) => {
   const { user } = useAuth();
+  const { t, language } = useI18n();
   
   const defaultData: PersonalDataItem[] = [
-    { label: 'NOME COMPLETO', value: user?.name || 'Alexandre Novaes de Oliveira' },
-    { label: 'MEMBRO DESDE', value: user?.createdAt ? new Date(user.createdAt).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) : 'Março, 2024' },
-    { label: 'ID DE ACESSO', value: '#NX-9982-CORE', highlight: true },
+    { label: t('profile.fullName') as string, value: user?.name || 'Alexandre Novaes de Oliveira' },
+    { label: t('profile.memberSince') as string, value: user?.createdAt ? new Date(user.createdAt).toLocaleDateString(language === 'pt-BR' ? 'pt-BR' : 'en-US', { month: 'long', year: 'numeric' }) : (language === 'pt-BR' ? 'Março, 2024' : 'March, 2024') },
   ];
 
   const displayData = data || defaultData;
@@ -26,7 +26,7 @@ const PersonalDataCard = ({ data }: PersonalDataCardProps) => {
     <GlassCard className="p-6 shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-white/5">
       <div className="flex items-center gap-2 mb-4">
         <span className="material-symbols-outlined text-primary-container">badge</span>
-        <h3 className="text-[18px] font-semibold leading-6">Dados Pessoais</h3>
+        <h3 className="text-[18px] font-semibold leading-6">{t('profile.personalData')}</h3>
       </div>
       <div className="grid grid-cols-1 gap-6">
         {displayData.map((item, index) => (

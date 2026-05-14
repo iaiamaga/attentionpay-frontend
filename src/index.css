@@ -29,6 +29,10 @@
     box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
   }
 
+  .neon-glow-white {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+
   .neon-glow-purple {
     box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
   }

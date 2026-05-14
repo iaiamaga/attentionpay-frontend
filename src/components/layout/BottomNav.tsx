@@ -1,12 +1,13 @@
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '@/context';
 
 const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
 
   const navItems = [
     { path: '/dashboard', icon: 'grid_view', label: 'Início' },
-    { path: '/profile', icon: 'person', label: 'Perfil' },
   ];
 
   return (
@@ -26,14 +27,30 @@ const BottomNav = () => {
               }`}
             >
               <span 
-                className="material-symbols-outlined" 
-                style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
+                className="material-symbols-outlined " 
+                style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'neon-glow-white'" }}
               >
                 {item.icon}
               </span>
             </button>
           );
         })}
+        <button
+          onClick={() => navigate('/profile')}
+          className={`flex flex-col items-center justify-center p-1 transition-all duration-300 ${
+            location.pathname === '/profile' 
+              ? 'text-primary' 
+              : 'text-on-surface-variant/60 hover:text-on-surface'
+          }`}
+        >
+          <img 
+            src={user?.avatar} 
+            alt="Profile"
+            className={`w-8 h-8 rounded-full object-cover border border-white/20 ${
+              location.pathname === '/profile' ? 'neon-glow-white' : ''
+            }`}
+          />
+        </button>
       </div>
     </nav>
   );
