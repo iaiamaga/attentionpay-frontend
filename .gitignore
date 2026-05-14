@@ -9,6 +9,7 @@ DESIGN.md
 PRD.md
 AGENTS.md
 
+# Build e dependências
 dist/
 node_modules/
 
